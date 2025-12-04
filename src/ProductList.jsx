@@ -268,6 +268,14 @@ function ProductList({ onHomeClick }) {
         }));
     };
 
+    useEffect(() => {
+        const flags = {};
+        cartItems.forEach(item => {
+          flags[item.name] = true;
+        });
+        setAddedToCart(flags);
+      }, [cartItems]);
+
     const calculateTotalQuantity = () => {
         return cartItems
           ? cartItems.reduce((total, item) => total + item.quantity, 0)
